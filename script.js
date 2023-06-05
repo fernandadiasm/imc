@@ -6,6 +6,15 @@ const modalWrapper = document.querySelector('.modal-wrapper')
 const modalMessage = document.querySelector('.modal .title span')
 const modalBtnClose = document.querySelector('.modal button.close')
 
+const Modal = {
+    open() {
+        modalWrapper.classList.add('open')
+    },
+    close() {
+        modalWrapper.classList.remove('open')
+    }
+
+}
 
 form.onsubmit = event => {
     event.preventDefault()
@@ -17,11 +26,11 @@ form.onsubmit = event => {
     const message = `Seu IMC é de ${result}`
 
     modalMessage.innerText = message
-    modalWrapper.classList.add('open')
+    Modal.open()
 }
 
 modalBtnClose.addEventListener('click', () => {
-    modalWrapper.classList.remove('open')
+    Modal.close()
 })
 
 
