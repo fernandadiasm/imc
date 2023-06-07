@@ -6,13 +6,19 @@ const form = document.querySelector('form')
 const inputWeight = document.querySelector('#weight')
 const inputHeight = document.querySelector('#height')
 
+
+//existem duas formas, porém o on... só permite usar uma vez
+inputHeight.oninput = () => AlertError.close()
+inputWeight.addEventListener('input', () => {
+    AlertError.close()
+})
 form.onsubmit = event => {
     event.preventDefault()
 
     const weight = inputWeight.value
     const height = inputHeight.value
     const showAlertError = notANumber(weight) || notANumber(height)
-    
+
     if (showAlertError) {
         AlertError.open()
         return;
@@ -28,6 +34,7 @@ function displayResultMessage(result) {
     Modal.message.innerText = message
     Modal.open()
 }
+
 
 
 
